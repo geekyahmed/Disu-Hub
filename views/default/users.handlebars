@@ -1,0 +1,26 @@
+<div class="row mt-5">
+    {{#each users}}
+    <div class="col-xl-4 col-lg-5 col-md-4 col-sm-12 col-12 my-5">
+        <div class="card card-fluid">
+            <div class="card-body text-center">
+                <a href="user-profile.html" class="user-avatar user-avatar-floated user-avatar-xl">
+                    <img height="100px" width="100px;" src="/uploads/avataaars (1).png" alt="User Avatar"
+                        class="rounded-circle user-avatar-xl">
+                </a>
+                <h3 class="card-title mb-2">
+                    <a style="font-size:20px" href="/user/{{id}}">{{fullname}} </a>
+                </h3>
+                <h6 class="card-subtitle text-muted mb-3"> {{username}} </h6>
+                <div class="row">
+                    <div style="margin-left: 100px;"
+                        class=" mt-3 text-center  col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                        <a href="#" class="genric-btn success-border circle arrow">Follow<span
+                                class="fa fa-plus"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+</div>

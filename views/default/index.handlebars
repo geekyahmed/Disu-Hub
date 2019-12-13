@@ -1,0 +1,35 @@
+<div class="container my-5">
+
+    {{!-- Banner --}}
+
+    <div class="jumbotron text-center">
+  <h1 class="display-4">Welcome To DisuHub</h1>
+  <p class="lead">An online platform for students and computer enthusiast that love learning and completing challenges through an e-learning platform</p>
+  <hr class="my-4">
+  <p>A great place to learn</p>
+  <a class="btn btn-outline-info  btn-lg" href="#" role="button">Login</a>
+    <a class="btn btn-outline-info  btn-lg" href="#" role="button">Register</a>
+
+</div>
+
+{{!-- End Banner --}}
+
+
+ <div class="card-columns my-5">
+   <div class="">
+ {{#each courses}}
+  <div class="card">
+    <img src="{{display}}" alt="" width="200px" height="" class="card-img-top">
+ 
+    <div class="card-body ">
+      <h5 style=" font-size: 18px;" class="card-title">{{title}}</h5>
+      <div style="margin-top: 30px;" class="footer">
+        <a href="/course/{{id}}" class="btn btn-outline-success my-3">Start Course</a>
+      <p class="lead mt-3">{{status}}</p>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+</div> 
+</div>

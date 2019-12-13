@@ -1,0 +1,189 @@
+{{!-- 
+    <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+            <!-- Title -->
+            <h1 class="mt-4">{{course.title}}</h1>
+
+            <!-- Author -->
+            <p class="lead">
+                by
+                <a href="#">{{user.fullname}}</a>
+            </p>
+          
+
+            <hr>
+
+            <!-- Date/Time -->
+            <p>Posted on {{course.creationDate}}</p>
+  <h1 class="mt-4">{{course.desc}}</h1>
+            <hr>
+
+            <!-- Preview Image -->
+            <img class="img-fluid rounded" src="{{course.display}}" alt="">
+
+            <hr>
+<video controls height="30%">
+  <source src="{{course.file}}" type="video/mp4">
+  <p>Your browser doesn't support HTML5 video. Here is
+     a <a href="myVideo.mp4">link to the video</a> instead.</p>
+</video> 
+            <!-- Post Content -->
+            <p class="lead">{{course.description}}</p>
+
+
+            <hr>
+
+            <!-- Comments Form -->
+            <div class="card my-4">
+                <h5 class="card-header">Leave a Comment:</h5>
+                <div class="card-body">
+                    <form action="/course/{{course._id}}" method="post">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3" name="comment_body"></textarea>
+                            <input type="hidden" name="id" value="{{course._id}}">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Single Comment -->
+
+            {{#each course.comments}}
+                    <div class="media mb-4">
+                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                        <div class="media-body">
+                            <h5 class="mt-0">{{user.fullname}}</h5>
+                           {{body}}
+                        </div>
+                    </div>
+
+            {{/each}}
+
+    <!-- /.row --> --}}
+    <section class="post-content-area single-post-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-8 posts-list">
+							<div class="single-post row">
+								<div class="col-lg-12">
+									<div class="feature-img">
+										<img class="img-fluid" src="{{course.display}}" alt="">
+									</div>									
+								</div>
+								<div class="col-lg-3  col-md-3 meta-details">
+									<div class="user-details row">
+										<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{user.fullname}}</a> <span class="lnr lnr-user"></span></p>
+										<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{course.creationDate}}</a> <span class="lnr lnr-calendar-full"></span></p>
+										<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{visits}}</a> <span class="lnr lnr-eye"></span></p>
+										<p class="comments col-lg-12 col-md-12 col-6"><a href="#">{{comments.length}} Comments</a> <span class="lnr lnr-bubble"></span></p>
+										<ul class="social-links col-lg-12 col-md-12 col-6">
+											<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+											<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+											<li><a href="#"><i class="fa fa-github"></i></a></li>
+											<li><a href="#"><i class="fa fa-behance"></i></a></li>
+										</ul>																				
+									</div>
+								</div>
+								<div class="col-lg-9 col-md-9">
+									<h3 class="mt-20 mb-20">{{course.title}}</h3>
+									<p class="excert">{{course.desc}}	</p>
+								</div>
+								<div class="col-lg-12">
+                                    <h3 class="lead">About The Course</h3>
+									<div class="quotes">
+                                        <h3 class="lead text-center my-3">Preview of {{course.title}}</h3>
+                                        <video controls width="650px" height="10%">
+                                                 <source src="{{course.file}}" type="video/mp4">
+                                                <p>Your browser doesn't support HTML5 video. Here is a <a href="{{course.file}}">link to the video</a> instead.</p>
+                                            </video> <br>
+                                                {{course.description}}								
+                                    	</div>
+								</div>
+							</div>
+							<div class="comments-area">
+								<h4>{{comments.length}} Reviews</h4>
+								<div class="comment-list">
+                                    {{#each course.comments}}
+                                    <div class="single-comment justify-content-between d-flex">
+                                        <div class="user justify-content-between d-flex">
+                                            <div class="thumb">
+                                                <img src="img/blog/c1.jpg" alt="">
+                                            </div>
+                                            <div class="desc">
+                                                <h5><a href="#">{{user.fullname}}</a></h5>
+                                                                                                <p class="comment">
+                                                    {{body}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="reply-btn">
+                                               <a href="" class="btn-reply text-uppercase">reply</a> 
+                                        </div>
+                                    </div>
+                                {{/each}}
+                                </div>
+                                </div>
+							<div class="comment-form">
+								<h4>Leave a Review</h4>
+								<form action="/course/{{course._id}}" method="post">
+									<div class="form-group">
+										<textarea class="form-control mb-10" rows="5" name="comment_body" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+                                            <input type="hidden" name="id" value="{{course._id}}">
+									</div>
+									<button type="submit" href="#" class="primary-btn text-uppercase">Post Comment</a>	
+								</form>
+							</div>
+						</div>
+						<div class="col-lg-4 sidebar-widgets">
+							<div class="widget-wrap">
+								<div class="single-sidebar-widget search-widget">
+									<form class="search-form" action="#">
+			                            <input placeholder="Search Posts" name="search" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'" >
+			                            <button type="submit"><i class="fa fa-search"></i></button>
+			                        </form>
+								</div>
+								<div class="single-sidebar-widget user-info-widget">
+									<img src="{{user.pic}}" alt="">
+									<a href="#"><h4>{{user.fullname}}</h4></a>
+									<p>
+									{{user.bio}}
+									</p>
+									<ul class="social-links">
+										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fa fa-github"></i></a></li>
+										<li><a href="#"><i class="fa fa-behance"></i></a></li>
+									</ul>
+								</div>
+								<div class="single-sidebar-widget newsletter-widget">
+									<h4 class="newsletter-title">Newsletter</h4>
+									<p>
+										Here, I focus on a range of items and features that we use in life without
+										giving them a second thought.
+									</p>
+									<div class="form-group d-flex flex-row">
+									   <div class="col-autos">
+									      <div class="input-group">
+									        <div class="input-group-prepend">
+									          <div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i>
+											</div>
+									        </div>
+									        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'" >
+									      </div>
+									    </div>
+									    <a href="#" class="bbtns">Subcribe</a>
+									</div>	
+									<p class="text-bottom">
+										You can unsubscribe at any time
+									</p>								
+								</div>				
+							</div>
+						</div>
+					</div>
+				</div>	
+			</section>
+            
